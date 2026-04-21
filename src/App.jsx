@@ -1,35 +1,40 @@
-import { useEffect, useRef } from "react";
-import content from "./content.html?raw";
+import React, { useEffect } from 'react'
+import './styles.css'
+import Nav from './components/Nav'
+import Hero from './components/Hero'
+import Skills from './components/Skills'
+import Experience from './components/Experience'
+import Freelance from './components/Freelance'
+import Footer from './components/Footer'
 
-export default function App() {
-  const containerRef = useRef(null);
+function App(){
 
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    el.innerHTML = content;
+  useEffect(()=>{
+    const els = Array.from(document.querySelectorAll('.reveal'))
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('active')
+      })
+    }, { threshold: 0.1 })
+    els.forEach(e=>io.observe(e))
+    return ()=> io.disconnect()
+  }, [])
 
-    // Scroll reveal (replicate original script)
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            observer.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12 },
-    );
-    el.querySelectorAll(".reveal").forEach((n) => observer.observe(n));
+  return (
+    <div className="app">
+      <Nav />
+      <main>
+        <Hero />
+        <Skills />
+        <Experience />
+        <Freelance />
+      </main>
+      <Footer />
+    </div>
+  )
+}
 
-    // Smooth scroll for nav links
-    el.querySelectorAll("nav .nav-links a").forEach((link) => {
-      link.addEventListener("click", function (e) {
-        const href = this.getAttribute("href");
-        if (href && href.startsWith("#")) {
-          e.preventDefault();
-          const target = el.querySelector(href);
+export default App
           if (target) target.scrollIntoView({ behavior: "smooth" });
           const nav = el.querySelector(".nav-links");
           if (nav) nav.classList.remove("show");

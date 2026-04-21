@@ -1,16 +1,57 @@
-/* Minimal reset and import of existing styles */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+/* IDE-like theme for components */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-:root{--ink:#e6eef8;--ink2:#dbeafe;--muted:#93c5fd;--card:#0f1724;--border:#1f2937}
-body{font-family:Roboto,Arial,sans-serif;background:linear-gradient(180deg,#071029 0%,#0b1220 100%);color:var(--ink);margin:0}
+:root{--bg:#071026;--panel:#0b1220;--muted:rgba(255,255,255,0.6);--accent:#8b5cf6}
+html,body,#root{height:100%}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,#071029 0%,#0b1220 100%);color:#dbeafe;margin:0}
+.app{max-width:1200px;margin:28px auto;padding:16px}
 
-/* make inner content scrollable inside page */
-#root{min-height:100vh}
+nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.nav-brand{font-weight:800;color:var(--accent);text-decoration:none}
+.nav-links a{margin-left:12px;color:var(--muted);text-decoration:none}
 
-/* Simple container tweaks so app looks similar to previous */
-.editor-main{padding:28px}
-.page-section{padding:48px 0 32px 0;max-width:700px;margin:0 auto 32px auto}
+.ide-window{background:var(--panel);border-radius:10px;box-shadow:0 6px 30px rgba(2,6,23,0.6);overflow:hidden}
+.window-topbar{display:flex;align-items:center;gap:12px;padding:10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.window-controls span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.wc-close{background:#ff5f56}
+.wc-min{background:#ffbd2e}
+.wc-max{background:#27c93f}
+.tab-bar{display:flex;gap:8px}
+.tab{padding:6px 10px;border-radius:6px;background:transparent;color:rgba(255,255,255,0.6)}
+.tab.active{background:rgba(255,255,255,0.03);color:#fff}
+.editor-body{display:flex}
+.sidebar{width:64px;padding:12px;border-right:1px solid rgba(255,255,255,0.02)}
+.icon{padding:8px;margin:6px 0;background:rgba(255,255,255,0.02);text-align:center;border-radius:8px}
+.editor-main{flex:1;padding:18px}
 
-/* keep reveal visible behavior */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:none}
+.hero{position:relative;padding-bottom:18px}
+.hero-label{font-size:13px;color:rgba(255,255,255,0.6)}
+.hero-name{font-size:36px;margin:6px 0}
+.hero-title{color:#93c5fd;margin:6px 0}
+.avatar{width:96px;height:96px;border-radius:12px;position:absolute;right:18px;top:12px}
+.hero-summary{margin-top:16px;color:rgba(255,255,255,0.8);max-width:60ch}
+.hero-contacts{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.contact-pill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:999px;color:#fff;text-decoration:none}
+
+.page-section{margin-top:34px;padding:0 8px}
+.section-title{font-size:18px;margin:0 0 8px}
+.section-sub{color:var(--muted);margin-bottom:12px}
+.skills-grid{display:flex;gap:12px}
+.skill-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:8px;flex:1}
+.skill-card-title{font-weight:700;margin-bottom:8px}
+.skill-tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:6px;margin-right:8px;display:inline-block}
+
+.experience-card{padding:12px;border-radius:8px;background:rgba(255,255,255,0.01);margin-bottom:10px}
+.exp-header{display:flex;flex-direction:column}
+.exp-role{font-weight:700}
+.exp-company{color:var(--muted)}
+
+.projects-grid{display:flex;gap:12px}
+.project-card{padding:12px;border-radius:8px;background:rgba(255,255,255,0.01)}
+
+.site-footer{margin-top:28px;padding:14px;text-align:center;color:rgba(255,255,255,0.5)}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(8px);transition:all .6s cubic-bezier(.2,.8,.2,1)}
+.reveal.active{opacity:1;transform:none}
+
