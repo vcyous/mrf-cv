@@ -11,19 +11,20 @@
     />
     <style>
       :root {
-        --ink: #181818;
-        --ink2: #232323;
-        --muted: #6b7280;
-        --subtle: #bdbdbd;
-        --accent: #2563eb;
-        --surface: #fff;
-        --card: #fff;
-        --border: #ededed;
-        --tag-bg: #f5f5f5;
-        --tag-text: #2563eb;
-        --free-accent: #2563eb;
-        --free-tag-bg: #f5f5f5;
-        --free-tag-text: #2563eb;
+        --ink: #e6eef8;
+        --ink2: #dbeafe;
+        --muted: #93c5fd;
+        --subtle: #9ca3af;
+        --accent: #7c3aed;
+        --accent2: #06b6d4;
+        --surface: linear-gradient(180deg,#071029 0%, #0b1220 100%);
+        --card: #0f1724;
+        --border: #1f2937;
+        --tag-bg: rgba(124,58,237,0.12);
+        --tag-text: #a78bfa;
+        --free-accent: #06b6d4;
+        --free-tag-bg: rgba(6,182,212,0.08);
+        --free-tag-text: #06b6d4;
       }
       *,
       *::before,
@@ -45,7 +46,48 @@
         font-size: 16px;
         overflow-x: hidden;
         letter-spacing: 0.01em;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
       }
+
+      /* IDE-like window */
+      .ide-window {
+        max-width: 980px;
+        margin: 92px auto 40px auto;
+        background: var(--card);
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(2,6,23,0.6);
+        border: 1px solid rgba(255,255,255,0.02);
+        overflow: hidden;
+      }
+      .window-topbar {
+        height: 44px;
+        display:flex;
+        align-items:center;
+        gap:12px;
+        padding:0 14px;
+        background: linear-gradient(90deg, rgba(124,58,237,0.06), rgba(6,182,212,0.03));
+        border-bottom: 1px solid var(--border);
+      }
+      .window-controls {
+        display:flex;gap:8px;align-items:center;
+      }
+      .window-controls span{width:12px;height:12px;border-radius:50%;display:block}
+      .wc-close{background:#ff5f56}
+      .wc-min{background:#ffbd2e}
+      .wc-max{background:#27c93f}
+      .tab-bar{display:flex;gap:8px;margin-left:8px}
+      .tab{padding:6px 12px;border-radius:6px;color:var(--muted);font-size:13px}
+      .tab.active{background:rgba(255,255,255,0.02);color:var(--ink2);font-weight:600}
+      .editor-body{display:flex;gap:0}
+      .sidebar{width:72px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px 10px;display:flex;flex-direction:column;gap:12px}
+      .sidebar .icon{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+      .editor-main{flex:1;padding:28px}
+      .avatar{width:96px;height:96px;border-radius:8px;object-fit:cover;border:2px solid rgba(255,255,255,0.04);box-shadow:0 8px 24px rgba(6,11,20,0.6);float:right;margin-left:18px}
+      .hero-name{color:var(--ink2)}
+      .project-card, .freelance-card, .skill-card{background:transparent;border:1px solid rgba(255,255,255,0.03)}
+      .project-card-title,.freelance-title{color:var(--ink2)}
+      .project-tag{background:transparent;color:var(--tag-text);border:1px solid rgba(167,139,250,0.08)}
 
       /* ── NAV ─────────────────────────────────────────── */
       nav {
@@ -579,12 +621,33 @@
         <a href="#freelance">Freelance</a>
       </div>
     </nav>
+    <!-- IDE-like wrapper -->
+    <div class="ide-window">
+      <div class="window-topbar">
+        <div class="window-controls">
+          <span class="wc-close"></span>
+          <span class="wc-min"></span>
+          <span class="wc-max"></span>
+        </div>
+        <div class="tab-bar">
+          <div class="tab active">mrf-cv — index.html</div>
+          <div class="tab">styles.css</div>
+        </div>
+      </div>
+      <div class="editor-body">
+        <div class="sidebar">
+          <div class="icon">📁</div>
+          <div class="icon">🔧</div>
+          <div class="icon">⚙️</div>
+        </div>
+        <div class="editor-main">
 
     <!-- ── HERO ── -->
     <section class="hero">
       <div class="hero-label">Full-Stack Engineer · Cikarang, Jawa Barat</div>
       <h1 class="hero-name">Muhammad<br />Rizki Fani</h1>
       <p class="hero-title">Building payment systems end-to-end</p>
+      <img class="avatar" src="assets/avatar.svg" alt="Muhammad Rizki Fani">
       <p class="hero-summary">
         Full-Stack Engineer experienced in designing and delivering end-to-end
         payment platforms at DOKU — Indonesia's leading payment technology
@@ -640,6 +703,10 @@
       </div>
       <div class="hero-scroll">Scroll to explore</div>
     </section>
+
+        </div>
+      </div>
+    </div>
 
     <!-- ── SKILLS ── -->
     <section id="skills" class="page-section">
