@@ -35,19 +35,4 @@ function App(){
 }
 
 export default App
-          if (target) target.scrollIntoView({ behavior: "smooth" });
-          const nav = el.querySelector(".nav-links");
-          if (nav) nav.classList.remove("show");
-        }
-      });
-    });
 
-    return () => {
-      el.querySelectorAll("nav .nav-links a").forEach((link) => {
-        link.replaceWith(link.cloneNode(true));
-      });
-    };
-  }, []);
-
-  return <div ref={containerRef} />;
-}
