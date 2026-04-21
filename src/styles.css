@@ -1,0 +1,16 @@
+/* Minimal reset and import of existing styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root{--ink:#e6eef8;--ink2:#dbeafe;--muted:#93c5fd;--card:#0f1724;--border:#1f2937}
+body{font-family:Roboto,Arial,sans-serif;background:linear-gradient(180deg,#071029 0%,#0b1220 100%);color:var(--ink);margin:0}
+
+/* make inner content scrollable inside page */
+#root{min-height:100vh}
+
+/* Simple container tweaks so app looks similar to previous */
+.editor-main{padding:28px}
+.page-section{padding:48px 0 32px 0;max-width:700px;margin:0 auto 32px auto}
+
+/* keep reveal visible behavior */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
